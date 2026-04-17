@@ -1,0 +1,9 @@
+{
+    "website": {
+        "name": "2.0.0"
+    },
+    "android": {
+        "name": "0.0.4",
+        "code": 4
+    }
+}

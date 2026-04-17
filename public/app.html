@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>Wallpaper时光机 - APP页</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #000;
+            background-image: url('/assets/background-image_XSODI03e3Ia61QzCytqVX.webp');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        document.addEventListener('plusready', function () {
+            plus.navigator.hideSystemNavigation();
+            plus.navigator.setUserAgent(navigator.userAgent);
+            var mainWebview = plus.webview.create('https://wallpaper.mcyin.com', 'main', {
+                width: '100%',
+                height: '100%',
+                top: '0px',
+                left: '0px',
+                bottom: '0px',
+                right: '0px',
+            });
+            var lastBackTime = 0;
+            plus.key.addEventListener('backbutton', function () {
+                mainWebview.canBack(function (result) {
+                    if (result.canBack) {
+                        mainWebview.back();
+                    } else {
+                        var currentTime = Date.now();
+                        if (currentTime - lastBackTime > 1000) {
+                            lastBackTime = currentTime;
+                            plus.nativeUI.toast('再按一次退出应用');
+                        } else {
+                            plus.runtime.quit();
+                        }
+                    }
+                });
+            }, false);
+            mainWebview.show();
+        }, false);
+    </script>
+</body>
+
+</html>

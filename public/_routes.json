@@ -1,0 +1,12 @@
+{
+    "version": 1,
+    "include": [
+        "/",
+        "/detail",
+        "/detail/",
+        "/assets/entries/entry-server-routing.*.js",
+        "/assets/entries/pages_index.*.js",
+        "/assets/entries/pages_detail.*.js"
+    ],
+    "exclude": []
+}
